@@ -53,10 +53,10 @@ describe('<InterestCalculator />', () => {
     expect(container.find('#rate').prop('value')).toEqual(0);
     container.find('#rate').simulate('change', {
       target: {
-        value: 0.025,
+        value: 2.5,
       },
     });
-    expect(container.find('#rate').prop('value')).toEqual(0.025);
+    expect(container.find('#rate').prop('value')).toEqual(2.5);
   });
 
   // Test for correct value after calculating the total
@@ -79,11 +79,11 @@ describe('<InterestCalculator />', () => {
 
     container.find('#rate').simulate('change', {
       target: {
-        value: 0.025,
+        value: 2.5,
       },
     });
 
     container.find('button').simulate('click');
-    expect(container.find('.total').text()).toEqual('Total: 5625'); // 5000 * (1 + (0.025 * 5)) = 5625
+    expect(container.find('.total').text()).toEqual('Total: 5625'); // 5000 * (1 + (0.01 * 2.5 * 5)) = 5625
   });
 });
