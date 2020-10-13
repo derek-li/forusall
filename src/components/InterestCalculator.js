@@ -9,7 +9,6 @@ export default function Form() {
 
   const total = useSelector(state => state.total);
   const dispatch = useDispatch();
-  
 
   const onPrincipalChanged = (e) => setPrincipal(e.target.value);
   const onYearsChanged = (e) => setYears(e.target.value);
@@ -35,7 +34,7 @@ export default function Form() {
           value={years}
           onChange={onYearsChanged}
         />
-        <label htmlFor="rate">Rate:</label>
+        <label htmlFor="rate">Rate (in %):</label>
         <input
           type="number"
           id="rate"
@@ -43,7 +42,10 @@ export default function Form() {
           value={rate}
           onChange={onRateChanged}
         />
-        <button onClick={() => dispatch(calculateInterest(principal, years, rate))}>
+        <button onClick={(e) => {
+          e.preventDefault();
+          dispatch(calculateInterest(principal, years, rate * 0.01));
+        }}>
           Calculate
         </button>
       </form>
